@@ -1,8 +1,18 @@
 # getting data
-##NEED TO COME BACK TO THIS
 pandas
-pytest
 
 gspread 
 google-auth 
 google-auth-oauthlib 
+
+#testing
+pytest
+
+#running app
+pgeocode
+IPython
+flask
+
+
+#production server needs this to run the web app
+gunicorn
