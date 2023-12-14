@@ -1,0 +1,4 @@
+# getting data
+##NEED TO COME BACK TO THIS
+pandas
+pytest
