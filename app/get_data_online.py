@@ -1,8 +1,7 @@
 import gspread
 from google.oauth2 import service_account
 import pandas as pd
-import os
-from dotenv import load_dotenv
+
 
 
 def authenticate_gspread(credentials_path):
