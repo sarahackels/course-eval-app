@@ -25,31 +25,24 @@ def search_dashboard():
         request_data = dict(request.args)
         print("URL PARAMS:", request_data)
 
-    symbol = request_data.get("symbol") or "NFLX"
+    name = request_data.get("lastname") or "Rossetti"
 
     try:
-        df = fetch_stocks_data(symbol=symbol)
-        latest_close_usd = format_usd(df.iloc[0]["adjusted_close"])
-        latest_date = df.iloc[0]["timestamp"]
-        data = df.to_dict("records")
+        #df = sortdata(name)
+        
+        flash("Searched for Professor Ratings!", "success")
 
-        flash("Fetched Real-time Market Data!", "success")
-        return render_template("stocks_dashboard.html",
-            symbol=symbol,
-            latest_close_usd=latest_close_usd,
-            latest_date=latest_date,
-            data=data
-        )
+        return render_template("search_dashboard.html", name=name)
     except Exception as err:
         print('OOPS', err)
 
-        flash("Market Data Error. Please check your symbol and try again!", "danger")
-        return redirect("/stocks/form")
+        flash("Please check your Professor Name and try again!", "danger")
+        return redirect("/search/form")
 
 #
 # API ROUTES
 #
-
+'''
 @stocks_routes.route("/api/stocks.json")
 def stocks_api():
     print("STOCKS DATA (API)...")
@@ -66,3 +59,5 @@ def stocks_api():
     except Exception as err:
         print('OOPS', err)
         return {"message":"Market Data Error. Please try again."}, 404
+
+'''
