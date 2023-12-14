@@ -3,11 +3,45 @@
 
 {% block content %}
 
-    <h2>Professor Dashboard ({{ name }})</h2>
-    <h2>Professor Dashboard</h2>
+    <h2>Professor {{ name }} Dashboard</h2>
 
+    <p1>Professor {{ name }} has taught {{stats[0]}} classes at Georgetown. On average, students
+        have ranked this professor a {{stats[1]}} out of 5. The highest overall ranking this
+        professor averaged for one term was {{stats[2]}} and the lowest was {{stats[1]}}.
+    </p1>
 
-    <p>This is me testing to see if this works</p>
-    
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Course Title</th>
+                    <th>Term</th>
+                    <th>Hours spent studying per week</th>
+                    <th>Effectiveness of readings & research</th>
+                    <th>Exams, etc., represent course content</th>
+                    <th>How much did you learn in course</th>
+                    <th>Classroom presentations stimulating</th>
+                    <th>Instructor available outside class</th>
+                    <th>Overall evaluation of instructor</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for index, row in data.iterrows() %}
+                    <tr>
+                        <td>{{ row['Course Title']}}</td>
+                        <td>{{ row['Term'] }}</td>
+                        <td>{{ row['Hours spent studying per week']}}</td>
+                        <td>{{ row['Effectiveness of readings & research']}}</td>
+                        <td>{{ row['Exams, etc., represent course content']}}</td>
+                        <td>{{ row['How much did you learn in course']}}</td>
+                        <td>{{ row['Classroom presentations stimulating']}}</td>
+                        <td>{{ row['Instructor available outside class'] }}</td>
+                        <td>{{ row['Overall evaluation of instructor'] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
 {% endblock %}
