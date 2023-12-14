@@ -2,3 +2,7 @@
 ##NEED TO COME BACK TO THIS
 pandas
 pytest
+
+gspread 
+google-auth 
+google-auth-oauthlib 
