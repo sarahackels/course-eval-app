@@ -1,0 +1,57 @@
+{% extends "bootstrap_5_layout.html" %}
+{% set active_page = "home" %}
+
+{% block content %}
+
+<h1>Welcome To the GU Course Evaluation Dashboard</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <!-- SEE: https://getbootstrap.com/docs/5.2/components/carousel/ -->
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active" data-bs-interval="10000">
+                        <img src="https://msb.georgetown.edu/wp-content/uploads/2022/05/2000w20090531-Hariri_0001.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    
+                    <div class="carousel-item" data-bs-interval="10000">
+                        <img src="https://images.unsplash.com/photo-1681266180459-69308250997a?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D.jpg" class="d-block w-100" alt="...">
+                    </div>
+
+                    <div class="carousel-item" data-bs-interval="10000">
+                        <img src="https://www.trolleytours.com/wp-content/uploads/2016/06/dahlgren-chapel-quad.jpg" class="d-block w-100" alt="...">
+                    </div>
+
+                    <div class="carousel-item" data-bs-interval="10000">
+                        <img src="https://cdn.britannica.com/33/132433-050-AA78347C/Healy-Hall-Georgetown-University-Washington-DC.jpg" class="d-block w-100" alt="...">
+                    </div> 
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+
+            <h3>Problem:</h3>
+            <p>
+                Georgetown updates and publishes this large data set that reports 
+                course evaluation results for all the professors and classes at the 
+                school. However, this spreadsheet is hard to read and challenging to 
+                draw meaningful conclusions from.
+            </p>
+            
+            <h3>Solution:</h3>
+                
+            <p>
+                We aim to create an interactive search form and dashboard to make the 
+                results of the course evaluations easy for students to understand. 
+                This way, students will be able to make more informed decisions as 
+                to what professors they want to take, and don't have to rely on skewed 
+                rate my professor results. We envision that this will also help hold 
+                professors more accountable, as their course evaluations will be more public.
+            </p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
