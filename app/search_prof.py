@@ -10,7 +10,7 @@ def sortdata(name):
     columns_to_remove=['sheet_name','season','year']
     updated_df = sorted.drop(columns=columns_to_remove)
 
-    #print(updated_df)
+    print(updated_df)
     return updated_df
 
 def getmean(data):
@@ -21,7 +21,7 @@ def getmean(data):
     highesteval = data["Overall evaluation of instructor"].max()
 
     stats = [coursenumber, meaneval, lowesteval, highesteval]
-    #print(stats)
+    print(stats)
     return stats
 
 if __name__ == "__main__":

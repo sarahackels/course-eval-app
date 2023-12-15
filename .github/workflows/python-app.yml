@@ -38,8 +38,8 @@ jobs:
       run: |
         pytest
 
- #
-    # USE OFFICIAL GOOGLE ACTION TO CREATE A CREDENTIALS JSON FILE
+
+# USE OFFICIAL GOOGLE ACTION TO CREATE A CREDENTIALS JSON FILE
     # https://github.com/google-github-actions/auth
     #
     - id: 'auth'
@@ -64,3 +64,4 @@ jobs:
         TEST_DATABASE_URL: 'postgresql://ci_user:ci_rocks@localhost:5432/my_db_test'
       run: |
         APP_ENV="test" CI="true" pytest
+    
