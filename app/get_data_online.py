@@ -8,6 +8,7 @@ load_dotenv()
 
 DEFAULT_FILEPATH = os.path.join(os.path.dirname(__file__), "..", "google-credentials.json")
 GOOGLE_CREDENTIALS_FILEPATH = os.getenv("GOOGLE_CREDENTIALS_FILEPATH", default=DEFAULT_FILEPATH)
+DOCUMENT_ID = os.getenv("DOCUMENT_ID")
 
 def authenticate_gspread(credentials_path=GOOGLE_CREDENTIALS_FILEPATH):
     try:
@@ -31,9 +32,9 @@ def get_spreadsheet_data(gc, spreadsheet_key, worksheet_name):
         print(f"Error accessing Google Sheet: {e}")
         return None
 
-def get_data2():
+def get_data2(key=DOCUMENT_ID):
     
-    spreadsheet_key = os.getenv("DOCUMENT_ID")
+    spreadsheet_key = key
     
     worksheet_name = 'course_evals_combined_20231204'
 
