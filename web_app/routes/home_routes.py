@@ -11,7 +11,12 @@ def index():
     #return "Welcome Home"
     return render_template("home.html")
 
-@home_routes.route("/search")
+@home_routes.route("/profsearch")
 def about():
     print("Search...")
     return render_template("search.html")
+
+@home_routes.route("/classsearch")
+def about2():
+    print("Search...")
+    return render_template("class_search.html")

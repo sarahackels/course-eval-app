@@ -1,0 +1,42 @@
+{% extends "bootstrap_5_layout.html" %}
+{% set active_page = "class_search_dashboard" %}
+
+{% block content %}
+
+    <h2> {{ name }} Dashboard</h2>
+
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Instructor Name</th>
+                    <th>Term</th>
+                    <th>Hours spent studying per week</th>
+                    <th>Effectiveness of readings & research</th>
+                    <th>Exams, etc., represent course content</th>
+                    <th>How much did you learn in course</th>
+                    <th>Classroom presentations stimulating</th>
+                    <th>Instructor available outside class</th>
+                    <th>Overall evaluation of instructor</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for index, row in data.iterrows() %}
+                    <tr>
+                        <td>{{ row['Instructor Name']}}</td>
+                        <td>{{ row['Term'] }}</td>
+                        <td>{{ row['Hours spent studying per week']}}</td>
+                        <td>{{ row['Effectiveness of readings & research']}}</td>
+                        <td>{{ row['Exams, etc., represent course content']}}</td>
+                        <td>{{ row['How much did you learn in course']}}</td>
+                        <td>{{ row['Classroom presentations stimulating']}}</td>
+                        <td>{{ row['Instructor available outside class'] }}</td>
+                        <td>{{ row['Overall evaluation of instructor'] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
