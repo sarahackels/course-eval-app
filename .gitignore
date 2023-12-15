@@ -1,3 +1,6 @@
+##ignore the google credentials file
+google-credentials.json
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -119,8 +122,6 @@ celerybeat.pid
 # SageMath parsed files
 *.sage.py
 
-#secrets
-.json
 
 # Environments
 .env

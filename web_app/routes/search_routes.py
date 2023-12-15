@@ -4,6 +4,7 @@
 from flask import Blueprint, request, render_template, redirect, flash
 
 from app.search_prof import sortdata
+from app.all_professors import unique_instructors
 from app.search_prof import getmean
 
 search_routes = Blueprint("search_routes", __name__)
@@ -11,7 +12,8 @@ search_routes = Blueprint("search_routes", __name__)
 @search_routes.route("/search/form")
 def search_form():
     print("SEARCH FORM...")
-    return render_template("search_form.html")
+    profnames = unique_instructors()
+    return render_template("search_form.html", professors=profnames)
 
 @search_routes.route("/search/dashboard", methods=["GET", "POST"])
 def search_dashboard():

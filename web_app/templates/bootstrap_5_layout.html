@@ -40,8 +40,8 @@
         https://getbootstrap.com/docs/5.0/components/navbar/
     -->
     {% set nav_links = [
-        ('/profsearch', 'profsearch', 'Professor Search'),
-        ('/classsearch','classsearch', 'Class Search')
+        ('/search/form', 'search_form', 'Professor Search'),
+        ('/class_search/form','classsearch', 'Class Search')
     ] -%}
     {% set active_page = active_page|default('home') -%}
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">

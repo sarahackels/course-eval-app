@@ -9,7 +9,6 @@ def sortdata2(name):
     #remove redundant columns
     columns_to_remove=['sheet_name','season','year']
     updated_df = sorted.drop(columns=columns_to_remove)
-    updated_df = updated_df.sort_values(by="Overall evaluation of instructor", ascending=False)
     print(updated_df)
 
     #print(updated_df)
