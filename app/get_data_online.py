@@ -28,7 +28,7 @@ def get_spreadsheet_data(gc, spreadsheet_key, worksheet_name):
 
 def get_data2():
 
-    credentials_path = '/Users/sarahackels/Downloads/Year 4/OPAN/course-eval-app/client_secrets.json'
+    credentials_path = '/Users/coleguzzetta/Documents/GitHub/course-eval-app/client_secrets.json'
     
     spreadsheet_key = '1LeZzY7Btb2TH_oWWbQl-EQEvIt9n4HKrfDCm3qE16BI'
     
