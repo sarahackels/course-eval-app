@@ -14,6 +14,7 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
+                    <th>Course</th>
                     <th>Course Title</th>
                     <th>Term</th>
                     <th>Hours spent studying per week</th>
@@ -29,6 +30,7 @@
             <tbody>
                 {% for index, row in data.iterrows() %}
                     <tr>
+                        <td>{{ row['Course']}}</td>
                         <td>{{ row['Course Title']}}</td>
                         <td>{{ row['Term'] }}</td>
                         <td>{{ row['Hours spent studying per week']}}</td>
