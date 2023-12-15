@@ -59,6 +59,7 @@ jobs:
       env:
         # access path of credentials file created by earlier auth step:
         GOOGLE_APPLICATION_CREDENTIALS: ${{ steps.auth.outputs.credentials_file_path }}
+        GOOGLE_CREDENTIALS_FILEPATH: ${{ steps.auth.outputs.credentials_file_path }}
         # the postgres service requires a password, so use the credentials set by earlier postgres service step:
         TEST_DATABASE_URL: 'postgresql://ci_user:ci_rocks@localhost:5432/my_db_test'
       run: |
