@@ -5,38 +5,139 @@
 
     <h2> {{ name }} Dashboard</h2>
 
-    <div class="table-responsive">
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Instructor Name</th>
-                    <th>Term</th>
-                    <th>Hours spent studying per week</th>
-                    <th>Effectiveness of readings & research</th>
-                    <th>Exams, etc., represent course content</th>
-                    <th>How much did you learn in course</th>
-                    <th>Classroom presentations stimulating</th>
-                    <th>Instructor available outside class</th>
-                    <th>Overall evaluation of instructor</th>
-                    
-                </tr>
-            </thead>
-            <tbody>
-                {% for index, row in data.iterrows() %}
-                    <tr>
-                        <td>{{ row['Instructor Name']}}</td>
-                        <td>{{ row['Term'] }}</td>
-                        <td>{{ row['Hours spent studying per week']}}</td>
-                        <td>{{ row['Effectiveness of readings & research']}}</td>
-                        <td>{{ row['Exams, etc., represent course content']}}</td>
-                        <td>{{ row['How much did you learn in course']}}</td>
-                        <td>{{ row['Classroom presentations stimulating']}}</td>
-                        <td>{{ row['Instructor available outside class'] }}</td>
-                        <td>{{ row['Overall evaluation of instructor'] }}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+    <div class="container mt-4">
+        <div class="accordion" id="dataTableAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="tableHeading">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#dataTableCollapse" aria-expanded="false" aria-controls="dataTableCollapse">
+                        Dashboard Data
+                    </button>
+                </h2>
+                <div id="dataTableCollapse" class="accordion-collapse collapse" aria-labelledby="tableHeading" data-bs-parent="#dataTableAccordion">
+                    <div class="accordion-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Instructor Name</th>
+                                        <th>Term</th>
+                                        <th>Hours spent studying per week</th>
+                                        <th>Effectiveness of readings & research</th>
+                                        <th>Exams, etc., represent course content</th>
+                                        <th>How much did you learn in the course</th>
+                                        <th>Classroom presentations stimulating</th>
+                                        <th>Instructor available outside class</th>
+                                        <th>Overall evaluation of the instructor</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for index, row in data.iterrows() %}
+                                        <tr>
+                                            <td>{{ row['Instructor Name']}}</td>
+                                            <td>{{ row['Term'] }}</td>
+                                            <td>{{ row['Hours spent studying per week']}}</td>
+                                            <td>{{ row['Effectiveness of readings & research']}}</td>
+                                            <td>{{ row['Exams, etc., represent course content']}}</td>
+                                            <td>{{ row['How much did you learn in the course']}}</td>
+                                            <td>{{ row['Classroom presentations stimulating']}}</td>
+                                            <td>{{ row['Instructor available outside class'] }}</td>
+                                            <td>{{ row['Overall evaluation of the instructor'] }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <canvas id="myChart" width="400" height="200"></canvas>
+        </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <script>
+        var instructorData = {};
+        $('table tbody tr').each(function() {
+            var instructor = $(this).find('td:eq(0)').text();
+            var evaluation = parseFloat($(this).find('td:eq(8)').text());
+
+            console.log("Instructor:", instructor, "Evaluation:", evaluation);
+
+            if (!instructorData[instructor]) {
+                instructorData[instructor] = { total: 0, count: 0 };
+            }
+
+            instructorData[instructor].total += evaluation;
+            instructorData[instructor].count += 1;
+        });
+
+        var instructorAverages = {};
+        for (var instructor in instructorData) {
+            instructorAverages[instructor] = instructorData[instructor].total / instructorData[instructor].count;
+        }
+
+        var ctx = document.getElementById('myChart').getContext('2d');
+
+        console.log("Context:", ctx);
+
+        var reversedLabels = Object.keys(instructorAverages).reverse();
+
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: reversedLabels,
+                datasets: [{
+                    label: 'Overall Evaluation',
+                    data: Object.values(instructorAverages),
+                    backgroundColor: 'blue',
+                    borderWidth: 1,
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        type: 'category',
+                        position: 'bottom',
+                        title: {
+                            display: true,
+                            text: 'Instructor',
+                            font: {
+                                weight: 'italic',
+                                size: 14
+                            }
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        max: 5,
+                        title: {
+                            display: true,
+                            text: 'Overall Evaluation',
+                            font: {
+                                weight: 'italic',
+                                size: 14
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Overall Evaluation by Instructor',
+                        font: {
+                            weight: 'bold',
+                            size: 18
+                        }
+                    }
+                }
+            }
+        });
+    </script>
 
 {% endblock %}
