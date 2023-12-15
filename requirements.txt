@@ -4,6 +4,7 @@ pandas
 gspread 
 google-auth 
 google-auth-oauthlib 
+dotenv
 
 #testing
 pytest

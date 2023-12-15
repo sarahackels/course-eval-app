@@ -21,7 +21,7 @@ def getmean(data):
     highesteval = data["Overall evaluation of instructor"].max()
 
     stats = [coursenumber, meaneval, lowesteval, highesteval]
-    print(stats)
+    #print(stats)
     return stats
 
 if __name__ == "__main__":

@@ -6,15 +6,19 @@
 
     <h2>Search Form</h2>
 
-    <p>Request information about a class</p>
+    <p>Request information about a course...</p>
 
     <form action="/class_search/dashboard" method="POST">
-
-        <label>Name of class:</label>
-        <input type="text" name="classname" placeholder="OPIM244" value="OPIM244">
-        <br>
-
-        <button class="btn btn-success">Submit</button>
+        <label for="professorInput">Course Name:</label>
+        <div class="input-group mb-3">
+            <input type="text" id="courseInput" name="course" class="form-control" list="courses" placeholder="Type or select a course">
+            <datalist id="courses">
+                {% for course in courses %}
+                    <option value="{{ course }}">{{course}}</option>
+                {% endfor %}
+            </datalist>
+            <button class="btn btn-success" type="submit">Submit</button>
+        </div>
     </form>
 
 {% endblock %}

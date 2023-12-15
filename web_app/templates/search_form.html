@@ -1,0 +1,23 @@
+{% extends "bootstrap_5_layout.html" %}
+{% set active_page = "search_form" %}
+
+{% block content %}
+
+    <h2>Search Form</h2>
+
+    <p>Request information about a professor...</p>
+
+    <form action="/search/dashboard" method="POST">
+        <label for="professorInput">Professor Name:</label>
+        <div class="input-group mb-3">
+            <input type="text" id="professorInput" name="lastname" class="form-control" list="professors" placeholder="Type or select a professor">
+            <datalist id="professors">
+                {% for professor in professors %}
+                    <option value="{{ professor }}">{{professor}}</option>
+                {% endfor %}
+            </datalist>
+            <button class="btn btn-success" type="submit">Submit</button>
+        </div>
+    </form>
+
+{% endblock %}

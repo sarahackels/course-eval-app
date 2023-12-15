@@ -1,10 +1,15 @@
 import gspread
 from google.oauth2 import service_account
 import pandas as pd
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 
+DEFAULT_FILEPATH = os.path.join(os.path.dirname(__file__), "..", "google-credentials.json")
+GOOGLE_CREDENTIALS_FILEPATH = os.getenv("GOOGLE_CREDENTIALS_FILEPATH", default=DEFAULT_FILEPATH)
 
-def authenticate_gspread(credentials_path):
+def authenticate_gspread(credentials_path=GOOGLE_CREDENTIALS_FILEPATH):
     try:
         creds = service_account.Credentials.from_service_account_file(
             credentials_path, 
@@ -27,15 +32,13 @@ def get_spreadsheet_data(gc, spreadsheet_key, worksheet_name):
         return None
 
 def get_data2():
-
-    credentials_path = '/Users/coleguzzetta/Documents/GitHub/course-eval-app/client_secrets.json'
     
     spreadsheet_key = '1LeZzY7Btb2TH_oWWbQl-EQEvIt9n4HKrfDCm3qE16BI'
     
     worksheet_name = 'course_evals_combined_20231204'
 
     # Authenticate with Google Sheets
-    gc = authenticate_gspread(credentials_path)
+    gc = authenticate_gspread()
 
     if gc is not None:
         # Get data from the specified worksheet
