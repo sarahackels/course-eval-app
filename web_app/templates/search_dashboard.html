@@ -10,42 +10,55 @@
         professor averaged for one term was {{stats[2]}} and the lowest was {{stats[1]}}.
     </p1>
 
-    <div class="container mt-4"></div>
-        <div class="table-responsive">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Course</th>
-                        <th>Course Title</th>
-                        <th>Term</th>
-                        <th>Hours spent studying per week</th>
-                        <th>Effectiveness of readings & research</th>
-                        <th>Exams, etc., represent course content</th>
-                        <th>How much did you learn in course</th>
-                        <th>Classroom presentations stimulating</th>
-                        <th>Instructor available outside class</th>
-                        <th>Overall evaluation of instructor</th>
-                        
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for index, row in data.iterrows() %}
-                        <tr>
-                            <td>{{ row['Course']}}</td>
-                            <td>{{ row['Course Title']}}</td>
-                            <td>{{ row['Term'] }}</td>
-                            <td>{{ row['Hours spent studying per week']}}</td>
-                            <td>{{ row['Effectiveness of readings & research']}}</td>
-                            <td>{{ row['Exams, etc., represent course content']}}</td>
-                            <td>{{ row['How much did you learn in course']}}</td>
-                            <td>{{ row['Classroom presentations stimulating']}}</td>
-                            <td>{{ row['Instructor available outside class'] }}</td>
-                            <td>{{ row['Overall evaluation of instructor'] }}</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+    <div class="container mt-4">
+        <div class="accordion" id="tableAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="tableHeader">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTable" aria-expanded="false" aria-controls="collapseTable">
+                        Dashboard Data
+                    </button>
+                </h2>
+                <div id="collapseTable" class="accordion-collapse collapse" aria-labelledby="tableHeader">
+                    <div class="accordion-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Course</th>
+                                        <th>Course Title</th>
+                                        <th>Term</th>
+                                        <th>Hours spent studying per week</th>
+                                        <th>Effectiveness of readings & research</th>
+                                        <th>Exams, etc., represent course content</th>
+                                        <th>How much did you learn in course</th>
+                                        <th>Classroom presentations stimulating</th>
+                                        <th>Instructor available outside class</th>
+                                        <th>Overall evaluation of instructor</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for index, row in data.iterrows() %}
+                                        <tr>
+                                            <td>{{ row['Course']}}</td>
+                                            <td>{{ row['Course Title']}}</td>
+                                            <td>{{ row['Term'] }}</td>
+                                            <td>{{ row['Hours spent studying per week']}}</td>
+                                            <td>{{ row['Effectiveness of readings & research']}}</td>
+                                            <td>{{ row['Exams, etc., represent course content']}}</td>
+                                            <td>{{ row['How much did you learn in course']}}</td>
+                                            <td>{{ row['Classroom presentations stimulating']}}</td>
+                                            <td>{{ row['Instructor available outside class'] }}</td>
+                                            <td>{{ row['Overall evaluation of instructor'] }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
         <div class="mt-4">
             <canvas id="myChart" width="400" height="200"></canvas>
         </div>
