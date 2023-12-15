@@ -33,7 +33,7 @@ def get_spreadsheet_data(gc, spreadsheet_key, worksheet_name):
 
 def get_data2():
     
-    spreadsheet_key = '1LeZzY7Btb2TH_oWWbQl-EQEvIt9n4HKrfDCm3qE16BI'
+    spreadsheet_key = os.getenv("DOCUMENT_ID")
     
     worksheet_name = 'course_evals_combined_20231204'
 
