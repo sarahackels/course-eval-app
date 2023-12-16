@@ -1,4 +1,4 @@
-# getting data
+#Getting data
 pandas
 
 gspread 
@@ -6,14 +6,14 @@ google-auth
 google-auth-oauthlib 
 python-dotenv
 
-#testing
+#Testing
 pytest
 
-#running app
+#Running app
 pgeocode
 IPython
 flask
 
 
-#production server needs this to run the web app
+#Production server needs this to run the web app
 gunicorn
