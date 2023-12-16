@@ -28,9 +28,13 @@ def search_dashboard():
         request_data = dict(request.args)
         print("URL PARAMS:", request_data)
 
-    profname = request_data.get("lastname") or "Rossetti"
+    profname = request_data.get("lastname") or "Michael Rossetti"
 
     try:
+        profnames2 = unique_instructors()
+        if profname not in profnames2:
+            raise ValueError("Professor not found in the list of unique professors")
+
         df = sortdata(name=profname)
         profstats = getmean(df)
         

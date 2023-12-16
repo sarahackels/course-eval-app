@@ -11,8 +11,8 @@ class_routes = Blueprint("class_routes", __name__)
 @class_routes.route("/class_search/form")
 def classsearch_form():
     print("SEARCH FORM...")
-    profnames = unique_classes()
-    return render_template("class_search.html",courses=profnames )
+    classesnames = unique_classes()
+    return render_template("class_search.html",courses=classesnames )
 
 @class_routes.route("/class_search/dashboard", methods=["GET", "POST"])
 def classsearch_dashboard():
@@ -30,6 +30,10 @@ def classsearch_dashboard():
     coursename = request_data.get("course") or "OPIM244"
 
     try:
+        classesnames2 = unique_classes()
+        if coursename not in classesnames2:
+            raise ValueError("Class not found in the list of unique classes")
+        
         df = sortdata2(name=coursename)
         
         flash("Searched for Class Ratings!", "success")
