@@ -8,9 +8,11 @@ import json
 
 load_dotenv()
 
+##get secrets
 GOOGLE_CREDENTIALS_FILE = os.getenv("GOOGLE_CREDENTIALS")
 DOCUMENT_ID = os.getenv("DOCUMENT_ID")
 
+##turn the environment string into a json file so that the google credentials can read it
 def string_to_json(encoded_credentials=GOOGLE_CREDENTIALS_FILE):
     if encoded_credentials:
         decoded_credentials = base64.b64decode(encoded_credentials).decode('utf-8')
@@ -19,6 +21,7 @@ def string_to_json(encoded_credentials=GOOGLE_CREDENTIALS_FILE):
     else:
         print("Environment variable for Google Credentials not found.")
 
+##make sure gspread works
 def authenticate_gspread(credentials):
     try:
         creds = service_account.Credentials.from_service_account_info(
@@ -31,6 +34,7 @@ def authenticate_gspread(credentials):
         print(f"Authentication Error: {e}")
         return None
 
+## get the data and make sure that it is authenticated
 def get_spreadsheet_data(gc, spreadsheet_key, worksheet_name):
     try:
         spreadsheet = gc.open_by_key(spreadsheet_key)
@@ -41,6 +45,7 @@ def get_spreadsheet_data(gc, spreadsheet_key, worksheet_name):
         print(f"Error accessing Google Sheet: {e}")
         return None
 
+##actually bring all the data in and make it into a pandas df
 def get_data2(key=DOCUMENT_ID, credentials=string_to_json()):
     spreadsheet_key = key
     worksheet_name = 'course_evals_combined_20231204'
@@ -56,8 +61,7 @@ def get_data2(key=DOCUMENT_ID, credentials=string_to_json()):
             # Convert the data to a Pandas DataFrame
             df = pd.DataFrame(data_records)
 
-            # Print the DataFrame
-            print(df)
+            #print(df)
             return df
         else:
             print("Error getting data from the worksheet.")

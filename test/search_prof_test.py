@@ -1,4 +1,3 @@
-from app.get_data_online import get_data2
 from app.search_prof import sortdata, getmean
 
 
