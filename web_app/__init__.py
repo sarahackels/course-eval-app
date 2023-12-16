@@ -8,7 +8,7 @@ from web_app.routes.search_routes import search_routes
 from web_app.routes.class_routes import class_routes
 
 
-SECRET_KEY = os.getenv("SECRET_KEY", default="super secret") # set this to something else on production!!!
+SECRET_KEY = os.getenv("SECRET_KEY", default="super secret")
 
 def create_app():
     app = Flask(__name__)
