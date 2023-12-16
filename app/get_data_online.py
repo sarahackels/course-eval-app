@@ -50,7 +50,7 @@ def get_data2(key=DOCUMENT_ID):
             df = pd.DataFrame(data_records)
 
             # Print the DataFrame
-            print(df)
+            # print(df)
             return df
         else:
             print("Error getting data from the worksheet.")
